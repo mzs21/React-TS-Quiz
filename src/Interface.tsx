@@ -1,8 +1,10 @@
+import React from "react";
+
 export interface QuestionCardProps {
   question: string;
   answers: string[];
-  callback: any;
-  userAnswer: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  userAnswer: AnswerObject | undefined;
   questionNumber: number;
   totalQuestions: number;
 }
@@ -18,4 +20,11 @@ export interface QuestionProps {
 
 export interface QuestionState extends QuestionProps {
   answers: string[];
+}
+
+export interface AnswerObject {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
 }

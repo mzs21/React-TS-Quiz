@@ -1,5 +1,6 @@
-import { QuestionProps } from "./Interface";
-import { shuffleArray } from "./utils";
+import { QuestionProps } from "../Interface";
+import { shuffleArray } from "../utils";
+
 export enum Difficulty {
   EASY = "easy",
   MEDIUM = "medium",
@@ -7,7 +8,7 @@ export enum Difficulty {
 }
 
 export const fetchQuizQuestions = async (
-  amount: string,
+  amount: number,
   difficulty: Difficulty
 ) => {
   const endPoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
