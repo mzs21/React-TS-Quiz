@@ -28,3 +28,14 @@ export interface AnswerObject {
   correct: boolean;
   correctAnswer: string;
 }
+
+export interface ButtonWrapperProps {
+  correct: boolean;
+  userClicked: boolean;
+}
+
+export interface ButtonProps {
+  className: string;
+  event: () => void;
+  text: string;
+}

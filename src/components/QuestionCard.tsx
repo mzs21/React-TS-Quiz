@@ -1,5 +1,6 @@
 import { QuestionCardProps } from "../Interface";
-
+import { QuestionCardStyle } from "../styles/QuestionCard.styles";
+// import Wrapper from "../styles/Wrapper.styles";
 const QuestionCard = ({
   question,
   answers,
@@ -9,23 +10,29 @@ const QuestionCard = ({
   totalQuestions
 }: QuestionCardProps) => {
   return (
-    <div>
-      <p className="number">
-        Question: {questionNumber} / {totalQuestions}
-      </p>
-
-      <p dangerouslySetInnerHTML={{ __html: question }} />
-
+    <QuestionCardStyle>
       <div>
-        {answers.map((answer) => (
-          <div key={answer}>
-            <button disabled={!!userAnswer} value={answer} onClick={callback}>
-              <span dangerouslySetInnerHTML={{ __html: answer }} />
-            </button>
-          </div>
-        ))}
+        <p className="number">
+          Question: {questionNumber} / {totalQuestions}
+        </p>
+
+        <p dangerouslySetInnerHTML={{ __html: question }} />
+
+        <div>
+          {answers.map((answer) => (
+            <div
+              key={answer}
+              // correct={userAnswer?.correctAnswer === answer}
+              // userClicked={userAnswer?.answer === answer}
+            >
+              <button disabled={!!userAnswer} value={answer} onClick={callback}>
+                <span dangerouslySetInnerHTML={{ __html: answer }} />
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </QuestionCardStyle>
   );
 };
 
