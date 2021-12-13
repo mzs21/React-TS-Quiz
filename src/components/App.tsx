@@ -3,13 +3,8 @@ import { Difficulty, fetchQuizQuestions } from "../API/API";
 import QuestionCard from "../components/QuestionCard";
 import { AnswerObject, QuestionState } from "../Interface";
 import GlobalStyle from "../styles/App.styles";
-import {
-  Wrapper,
-  H1,
-  P,
-  StartButton,
-  NextButton
-} from "../styles/Wrapper.styles";
+import { Container, H1, P } from "../styles/Container.styles";
+import BackgroundImageStyles from "../styles/BackgroundImage.styles";
 import Button from "./Button";
 
 const TOTAL_QUESTIONS = 10;
@@ -83,14 +78,15 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Wrapper>
+      <Container>
+        <BackgroundImageStyles />
         <H1>General Knowledge Quiz</H1>
         {(gameOver || userAnswersLength === TOTAL_QUESTIONS) && startButton}
 
         {!gameOver && <P className="score">Score: {score}</P>}
         {loading && <P className="loading">Loading Questions...</P>}
 
-        {/* {!loading && !gameOver && (
+        {!loading && !gameOver && (
           <QuestionCard
             questionNumber={number + 1}
             totalQuestions={TOTAL_QUESTIONS}
@@ -99,14 +95,14 @@ const App = () => {
             userAnswer={userAnswers ? userAnswers[number] : undefined}
             callback={checkAnswer}
           />
-        )} */}
+        )}
 
         {!gameOver &&
           !loading &&
           userAnswersLength === number + 1 &&
           number !== TOTAL_QUESTIONS - 1 &&
           nextButton}
-      </Wrapper>
+      </Container>
     </>
   );
 };
